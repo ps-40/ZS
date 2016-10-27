@@ -1,0 +1,10 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+Tu bedzie lista kategorii sukienek.
+@Html.ActionLink("Kategoria1", "Dresses", "Zalando", new { categoryName = "Kategoria1" }, null);
+@Html.ActionLink("Kategoria2", "Dresses", "Zalando", new { categoryName = "Kategoria2" }, null);
+<a href="http://localhost:50132/Zalando/Dresses?categoryName=KategoriaDupa">KategoriaDupa</a>
