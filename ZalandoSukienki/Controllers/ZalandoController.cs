@@ -4,23 +4,26 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
-using ZalandoSukienki.ZalandoClient;
+using ZalandoApiClient.Api;
+using ZalandoApiClient.Model;
+using ZalandoSukienki.Models;
 
 namespace ZalandoSukienki.Controllers
 {
     public class ZalandoController : Controller
     {
-        // GET: TheBest
+
+        private RootModel rootModel = RootModel.Instance;
+        
         public ActionResult Index()
         {
-            return View();
+            return View(rootModel);
         }
-        public ActionResult Dresses(string categoryName)
+
+        public ActionResult Dresses(string categoryKey)
         {
-            ZalandoApiClient zalandoApiClient = new ZalandoApiClient();
-            string test = Task.Run(() => zalandoApiClient.GetApiHome()).Result;
-            ViewBag.CategoryName = categoryName;
-            return View();
+            rootModel.SelectCategory(categoryKey);
+            return View("Index", rootModel);
         }
     }
 }

@@ -1,4 +1,5 @@
-﻿
+﻿@model ZalandoSukienki.Models.RootModel
+
 @{
     ViewBag.Title = "Zalando - Sukienki";
 }
@@ -8,15 +9,12 @@
     <ul class="dresses">
        <li><div><a href="#">Sukienki</a></div>
            <ul class="dresses-list">
-                <!--TODO: foreach-->
-                <li class="@(ViewBag.CategoryName == "Sukienki letnie" ? "selected" : "")">@Html.ActionLink("Sukienki letnie", "Dresses", "Zalando", new { categoryName = "Sukienki letnie" }, null)</li>
-                <li class="@(ViewBag.CategoryName == "Sukienki koktajlowe" ? "selected" : "")">@Html.ActionLink("Sukienki koktajlowe", "Dresses", "Zalando", new { categoryName = "Sukienki koktajlowe" }, null)</li>
-                <li>@Html.ActionLink("Sukienki koszulowe", "Dresses", "Zalando", new { categoryName = "Sukienki koszulowe" }, null)</li>
-                <li>@Html.ActionLink("Sukienki z dzerseju", "Dresses", "Zalando", new { categoryName = "Sukienki z dzerseju" }, null)</li>
-                <li>@Html.ActionLink("Sukienki etui", "Dresses", "Zalando", new { categoryName = "Sukienki etui" }, null)</li>
-                <li>@Html.ActionLink("Sukienki dlugie", "Dresses", "Zalando", new { categoryName = "Sukienki dlugie" }, null)</li>
-                <li>@Html.ActionLink("Sukienki jeansowe", "Dresses", "Zalando", new { categoryName = "Sukienki jeansowe" }, null)</li>
-                <li>@Html.ActionLink("Sukienki dzianinowe", "Dresses", "Zalando", new { categoryName = "Sukienki dzianinowe" }, null)</li>
+               @foreach (var category in Model.CategoriesModel.Categories.Content)
+               {
+                <li class="@(Model.SelectedCategory != null && Model.SelectedCategory.Category.Key == category.Key ? "selected" : "")">
+                    @Html.ActionLink(category.Name, "Dresses", "Zalando", new { categoryKey = category.Key }, null)
+                </li>
+               }
            </ul>
         </li>
     </ul>
@@ -40,4 +38,10 @@
     </form>
 </div>
 
+@{ 
+    if (Model.SelectedCategory != null)
+    {
+        Html.RenderPartial("DressCategory", Model.SelectedCategory);
+    } 
+}
 

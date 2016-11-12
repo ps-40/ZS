@@ -1,0 +1,12 @@
+﻿@model ZalandoSukienki.Models.CategoryModel
+<div class="mainCol">
+    <h4>Category: @Model.Category.Key / @Model.Category.Name </h4>
+    <div class="images">
+        @foreach (var imageUrl in Model.ImageUrls)
+        {
+            <div>
+                <img src="@imageUrl" />
+            </div>
+        }
+    </div>
+</div>
