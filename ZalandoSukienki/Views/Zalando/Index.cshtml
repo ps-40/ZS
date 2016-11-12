@@ -3,11 +3,10 @@
     ViewBag.Title = "Zalando - Sukienki";
 }
 
-<h2>Index</h2>
 
-<div class="category">
+<div class="category-dresses">
     <ul class="dresses">
-       <li><div>Sukienki</div>
+       <li><div><a href="#">Sukienki</a></div>
            <ul class="dresses-list">
                 <!--TODO: foreach-->
                 <li class="@(ViewBag.CategoryName == "Sukienki letnie" ? "selected" : "")">@Html.ActionLink("Sukienki letnie", "Dresses", "Zalando", new { categoryName = "Sukienki letnie" }, null)</li>
@@ -22,3 +21,23 @@
         </li>
     </ul>
 </div>
+<div class="menu">
+    <form action="#">
+        <fieldset>
+            <label for="size">Rozmiar</label>
+            <select name="size" id="size">
+                <option>32</option>
+                <option>34</option>
+                <option>36</option>
+                <option>38</option>
+                <option>40</option>
+                <option>42</option>
+                <option>44</option>
+                <option>46</option>
+            </select>
+            <button>Zamknij</button>
+        </fieldset>
+    </form>
+</div>
+
+

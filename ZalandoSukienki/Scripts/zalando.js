@@ -12,3 +12,12 @@ $(document).ready(function () {
 
     $('.dresses ul:eq(0)').show();
 });
+$(document).ready(function () {
+    $("#size").selectmenu();
+});
+/*$( ".selector" ).selectmenu( "close" );
+  $( function() {
+    $( ".widget button" ).button();
+    $( "button" ).click( function( event ) {
+      event.preventDefault();
+      */
